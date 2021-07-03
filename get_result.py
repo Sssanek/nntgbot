@@ -12,7 +12,7 @@ import copy
 def start_style(style, content):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    imsize = 512 if torch.cuda.is_available() else 128  # use small size if no gpu
+    imsize = 512 # if torch.cuda.is_available() else 128  # use small size if no gpu
 
     loader = transforms.Compose([
         transforms.Resize(imsize),  # подгоним все под размер
@@ -36,10 +36,6 @@ def start_style(style, content):
 
         def __init__(self, target,):
             super(ContentLoss, self).__init__()
-            # we 'detach' the target content from the tree used
-            # to dynamically compute the gradient: this is a stated value,
-            # not a variable. Otherwise the forward method of the criterion
-            # will throw an error.
             self.target = target.detach()
 
         def forward(self, input):
@@ -177,7 +173,6 @@ def start_style(style, content):
                 run[0] += 1
                 if run[0] % 50 == 0:
                     print("run {}:".format(run))
-                    # progress(run[0], num_steps)
                     print('Style Loss : {:4f} Content Loss: {:4f}'.format(
                         style_score.item(), content_score.item()))
                     print()
