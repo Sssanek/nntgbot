@@ -1,2 +1,2 @@
-BOT_TOKEN = "1880536215:AAGYCJx7Ijt2ANU59qu_8TPgeyW3PWEGEDU"
-admin_id = "415765838"
+BOT_TOKEN = "i_was_silly_as_a_child"
+admin_id = "and_havent_delete_secrets"
